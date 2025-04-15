@@ -1,0 +1,198 @@
+/* 
+ * Custom Animations for Portfolio Website
+ * Inspired by 21st.dev components
+ */
+
+/* Text Shimmer Animation - Enhanced version */
+.text-shimmer {
+  background: linear-gradient(
+    90deg, 
+    var(--color-primary), 
+    var(--color-accent), 
+    var(--color-primary)
+  );
+  background-size: 200% auto;
+  color: var(--color-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Fade In Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Fade In for Lists */
+.stagger-fade-in > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-fade-in.visible > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.stagger-fade-in.visible > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.stagger-fade-in.visible > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.stagger-fade-in.visible > *:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.stagger-fade-in.visible > *:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.stagger-fade-in.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover Effects for Project Cards */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card .project-image img {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+/* Button Hover Animation */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Cursor Animation */
+.custom-cursor {
+  position: relative;
+}
+
+.custom-cursor::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll Indicator Animation */
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+/* Background Gradient Animation */
+.bg-gradient {
+  background: linear-gradient(
+    120deg,
+    rgba(74, 108, 247, 0.05),
+    rgba(74, 108, 247, 0.02),
+    rgba(245, 245, 250, 0.1),
+    rgba(74, 108, 247, 0.05)
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Reveal Animation for Sections */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Underline Animation for Links */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}

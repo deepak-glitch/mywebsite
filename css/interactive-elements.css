@@ -1,0 +1,403 @@
+/* 
+ * Additional styles for interactive elements
+ * Includes preloader, theme toggle, and dark mode
+ */
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.loader-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 998;
+}
+
+#themeToggleBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#themeToggleBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+#themeToggleBtn .fa-sun {
+  display: none;
+}
+
+#themeToggleBtn .fa-moon {
+  display: block;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  --color-primary: #ffffff;
+  --color-secondary: #aaaaaa;
+  --color-accent: #6d8dff;
+  --color-light: #2a2a2a;
+  --color-white: #1a1a1a;
+  --color-dark: #f5f5f5;
+  --color-border: #333333;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode #themeToggleBtn {
+  background-color: var(--color-light);
+}
+
+body.dark-mode #themeToggleBtn .fa-sun {
+  display: block;
+  color: var(--color-primary);
+}
+
+body.dark-mode #themeToggleBtn .fa-moon {
+  display: none;
+}
+
+body.dark-mode .project-card,
+body.dark-mode .case-study-image,
+body.dark-mode .image-frame {
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .tag {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: var(--color-secondary);
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--color-accent);
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+/* Enhanced Contact Form Styles */
+.form-group {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-group input:focus ~ label,
+.form-group textarea:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  background-color: var(--color-white);
+  padding: 0 0.25rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+}
+
+/* Button Loading State */
+.btn.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn.loading .btn-text {
+  visibility: hidden;
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-dark) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 10px);
+}
+
+/* Image Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Section Transitions */
+.section-visible {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skill Bars */
+.skills {
+  margin-top: var(--spacing-md);
+}
+
+.skill-item {
+  margin-bottom: 1rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-bar {
+  height: 8px;
+  background-color: var(--color-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.custom-cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+}
+
+a:hover ~ .custom-cursor-outline,
+button:hover ~ .custom-cursor-outline {
+  width: 60px;
+  height: 60px;
+  border-color: var(--color-accent);
+}
